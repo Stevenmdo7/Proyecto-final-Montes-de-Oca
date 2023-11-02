@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://icones.pro/wp-content/uploads/2022/03/icone-de-l-hopital-rouge.png" type="image/x-icon">
+    <title>Hospital Falso 123</title>
+</head>
+
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="operacion-hasbro-gaming-espana.mp4" type="video/mp4">
+    </video>
+    <div class="contenedor-login">
+        <h1>Hospitalisimo</h1>
+        <h2>Iniciar Sesión</h2>
+        <form id="formulario-login">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" required>
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <button id="boton-registrarse">Registrarse</button>
+        <button id="boton-recuperar-contrasena">Recuperar Contraseña</button>
+    </div>
+    <div class="contenedor-admin" style="display: none;">
+        <h1>Administración de Pacientes</h1>
+        <ul id="lista-pacientes"></ul>
+        <form id="formulario-paciente" style="display: none;">
+            <label for="nombre-paciente">Nombre:</label>
+            <input type="text" id="nombre-paciente" required>
+            <label for="apellido-paciente">Apellido:</label>
+            <input type="text" id="apellido-paciente" required>
+            <label for="edad-paciente">Edad:</label>
+            <input type="number" id="edad-paciente" required>
+            <label for="direccion-paciente">Dirección:</label>
+            <input type="text" id="direccion-paciente" required>
+            <label for="diagnostico-paciente">Diagnóstico:</label>
+            <input type="text" id="diagnostico-paciente" required>
+            <button type="button" id="confirmarPaciente">Confirmar</button>
+            <button type="button" id="cerrarFormulario">Cerrar Formulario</button>
+        </form>
+        <button id="boton-agregar-paciente">Agregar Paciente</button>
+        <button id="boton-agregar-pacientes-api">Agregar Pacientes del Servidor</button>
+        <button id="boton-cerrar-sesion">Cerrar Sesión</button>
+    </div>
+    <div class="contenedor-registro" style="display: none;">
+        <h1>Registro</h1>
+        <form id="formulario-registro">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" required>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+            </select>
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" required>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" required>
+            <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+            <input type="password" id="confirmar-contrasena" required>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+    <div class="superposicion" id="superposicion" style="display: none;">
+        <form id="formulario-paciente" style="display: none;">
+            <label for="nombre-paciente">Nombre:</label>
+            <input type="text" id="nombre-paciente" required>
+            <label for="apellido-paciente">Apellido:</label>
+            <input type="text" id="apellido-paciente" required>
+            <label for="edad-paciente">Edad:</label>
+            <input type="number" id="edad-paciente" required>
+            <label for="direccion-paciente">Dirección:</label>
+            <input type="text" id="direccion-paciente" required>
+            <label for="diagnostico-paciente">Diagnóstico:</label>
+            <input type="text" id="diagnostico-paciente" required>
+            <button type="button" id="confirmarPaciente">Confirmar</button>
+            <button type="button" id="cerrarFormulario">Cerrar</button>
+        </form>
+    </div>
+    <div class="contenedor-mensaje" id="contenedor-mensaje"></div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
