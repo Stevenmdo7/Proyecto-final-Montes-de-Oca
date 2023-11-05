@@ -191,7 +191,7 @@ function agregarPacienteManual(nombre, apellido, edad, direccion, diagnostico) {
     direccion,
     diagnostico,
     fechaHoraIngreso: `${fechaIngreso} ${horaIngreso}`,
-    imagen: previewImagen.src, // Utiliza la URL de la imagen
+    imagen: previewImagen.src, 
   };
 
   pacientes.push(paciente);
@@ -201,8 +201,8 @@ function agregarPacienteManual(nombre, apellido, edad, direccion, diagnostico) {
     title: "Paciente agregado con éxito!",
   });
 
-  previewImagen.src = ""; // Limpia la vista previa
-  previewImagen.style.display = "none"; // Oculta la vista previa
+  previewImagen.src = ""; 
+  previewImagen.style.display = "none"; 
 
   actualizarListaPacientes();
   localStorage.setItem("datosPacientes", JSON.stringify(pacientes));
