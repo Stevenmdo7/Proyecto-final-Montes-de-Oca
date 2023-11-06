@@ -59,7 +59,7 @@ if (pacientes.length === 0) {
 
 document
   .getElementById("boton-recuperar-contrasena")
-  .addEventListener("click", function () {
+  .addEventListener("click", () => {
     Swal.fire({
       title:
         "¿Quién ganó la Copa Mundial Qatar 2022?\n \n1-Uruguay\n2-Argentina\n3-Brasil\n4-Yo soy mas del anime",
@@ -71,9 +71,7 @@ document
       confirmButtonText: "Enviar",
       cancelButtonText: "Cancelar",
       showLoaderOnConfirm: true,
-      preConfirm: (respuesta) => {
-        return respuesta;
-      },
+      preConfirm: (respuesta) => respuesta,
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
@@ -191,7 +189,7 @@ function agregarPacienteManual(nombre, apellido, edad, direccion, diagnostico) {
     direccion,
     diagnostico,
     fechaHoraIngreso: `${fechaIngreso} ${horaIngreso}`,
-    imagen: previewImagen.src, 
+    imagen: previewImagen.src,
   };
 
   pacientes.push(paciente);
@@ -201,8 +199,8 @@ function agregarPacienteManual(nombre, apellido, edad, direccion, diagnostico) {
     title: "Paciente agregado con éxito!",
   });
 
-  previewImagen.src = ""; 
-  previewImagen.style.display = "none"; 
+  previewImagen.src = "";
+  previewImagen.style.display = "none";
 
   actualizarListaPacientes();
   localStorage.setItem("datosPacientes", JSON.stringify(pacientes));
@@ -282,17 +280,17 @@ function actualizarListaPacientes() {
   pacientes.forEach((paciente, indice) => {
     const itemPaciente = document.createElement("li");
     itemPaciente.innerHTML = `
-    <img src="${paciente.imagen}" alt="${paciente.nombre} ${paciente.apellido}" class="paciente-imagen">
-    <div>
-        <b>${paciente.nombre} ${paciente.apellido}</b><br>
-        Edad: ${paciente.edad}<br>
-        Direccion: ${paciente.direccion}<br>
-        Hora y Fecha de Ingreso: ${paciente.fechaHoraIngreso}<br>
-        Diagnóstico: ${paciente.diagnostico}
-    </div>
-    <button class="editar-paciente" data-indice="${indice}">Editar</button>
-    <button class="eliminar-paciente" data-indice="${indice}">Eliminar</button>
-`;
+      <img src="${paciente.imagen}" alt="${paciente.nombre} ${paciente.apellido}" class="imagen paciente-imagen">
+      <div>
+          <b>${paciente.nombre} ${paciente.apellido}</b><br>
+          Edad: ${paciente.edad}<br>
+          Direccion: ${paciente.direccion}<br>
+          Hora y Fecha de Ingreso: ${paciente.fechaHoraIngreso}<br>
+          Diagnóstico: ${paciente.diagnostico}
+      </div>
+      <button class="editar-paciente" data-indice="${indice}">Editar</button>
+      <button class="eliminar-paciente" data-indice="${indice}">Eliminar</button>
+      `;
 
     const botonEditar = itemPaciente.querySelector(".editar-paciente");
     botonEditar.addEventListener("click", function () {
@@ -304,17 +302,18 @@ function actualizarListaPacientes() {
 
       Swal.fire({
         title: "Editar Paciente",
-        html:
-          `<label for="nombre">Nombre</label>` +
-          `<input id="nombre" class="swal2-input" value="${paciente.nombre}" placeholder="Nombre">` +
-          `<label for="apellido">Apellido</label>` +
-          `<input id="apellido" class="swal2-input" value="${paciente.apellido}" placeholder="Apellido">` +
-          `<label for="edad">Edad</label>` +
-          `<input id="edad" class="swal2-input" type="number" value="${paciente.edad}" placeholder="Edad">` +
-          `<label for="direccion">Dirección</label>` +
-          `<input id="direccion" class="swal2-input" value="${paciente.direccion}" placeholder="Dirección">` +
-          `<label for="diagnostico">Diagnóstico</label>` +
-          `<input id="diagnostico" class="swal2-input" value="${paciente.diagnostico}" placeholder="Diagnóstico">`,
+        html: `
+            <label for="nombre">Nombre</label>
+            <input id="nombre" class="swal2-input" value="${paciente.nombre}" placeholder="Nombre">
+            <label for="apellido">Apellido</label>
+            <input id="apellido" class="swal2-input" value="${paciente.apellido}" placeholder="Apellido">
+            <label for="edad">Edad</label>
+            <input id="edad" class="swal2-input" type="number" value="${paciente.edad}" placeholder="Edad">
+            <label for="direccion">Dirección</label>
+            <input id="direccion" class="swal2-input" value="${paciente.direccion}" placeholder="Dirección">
+            <label for="diagnostico">Diagnóstico</label>
+            <input id="diagnostico" class="swal2-input" value="${paciente.diagnostico}" placeholder="Diagnóstico">
+          `,
         confirmButtonText: "Guardar",
         showCancelButton: true,
         cancelButtonText: "Cancelar",

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
       rel="icon"
       href="https://icones.pro/wp-content/uploads/2022/03/icone-de-l-hopital-rouge.png"
       type="image/x-icon"
@@ -18,20 +22,34 @@
     </video>
     <div class="imagen-container" id="imagen-container"></div>
     <div class="contenedor-login">
-      <h1>Hospitalisimo</h1>
-      <h2>Iniciar Sesión</h2>
+      <h1 class="animate__animated animate__rubberBand">
+        HOSPITALISIMO ULTRA FALSO!
+      </h1>
+      <h2 class="animate__animated animate__lightSpeedInRight">
+        Como politico en campaña!
+      </h2>
       <form id="formulario-login">
-        <label for="usuario">Usuario:</label>
+        <label class="animate__animated animate__rotateInDownLeft" for="usuario"
+          >Usuario:</label
+        >
         <input type="text" id="usuario" required />
-        <label for="contraseña">Contraseña:</label>
+        <label
+          class="animate__animated animate__rotateInUpRight"
+          for="contraseña"
+          >Contraseña:</label
+        >
         <input type="password" id="contraseña" required />
-        <button type="submit">Iniciar Sesión</button>
+        <button class="custom-button">Iniciar Sesión</button>
       </form>
-      <button id="boton-registrarse">Registrarse</button>
-      <button id="boton-recuperar-contrasena">Recuperar Contraseña</button>
+      <button class="custom-button" id="boton-registrarse">Registrarse</button>
+      <button class="custom-button" id="boton-recuperar-contrasena">
+        Recuperar Contraseña
+      </button>
     </div>
     <div class="contenedor-admin" style="display: none">
-      <h1>Administración de Pacientes</h1>
+      <h1 class="animate__animated animate__rubberBand infinite">
+        Administración de Pacientes
+      </h1>
       <ul id="lista-pacientes"></ul>
       <form id="formulario-paciente" style="display: none">
         <label for="nombre-paciente">Nombre:</label>
@@ -45,22 +63,35 @@
         <label for="diagnostico-paciente">Diagnóstico:</label>
         <input type="text" id="diagnostico-paciente" required />
         <label for="imagen-paciente">Imagen del paciente:</label>
-        <input type="file" id="imagen-paciente" accept="image/*" />
+        <input
+          type="file"
+          id="imagen-paciente"
+          accept="image/*"
+          style="background-color: white"
+        />
         <img
           id="preview-imagen"
           src=""
           alt="Preview de la imagen"
           style="max-width: 100px; max-height: 100px; display: none"
         />
-        <button type="button" id="reset-imagen">Eliminar Imagen</button>
-        <button type="button" id="confirmarPaciente">Confirmar</button>
-        <button type="button" id="cerrarFormulario">Cerrar Formulario</button>
+        <button class="gerardito" type="button" id="reset-imagen">
+          Eliminar Imagen
+        </button>
+        <button class="gerardito" type="button" id="confirmarPaciente">
+          Confirmar
+        </button>
+        <button class="gerardito" type="button" id="cerrarFormulario">
+          Cerrar Formulario
+        </button>
       </form>
-      <button id="boton-agregar-paciente">Agregar Paciente</button>
-      <button id="boton-agregar-pacientes-api">
-        Agregar Pacientes del Servidor
+      <button class="gerardito" id="boton-agregar-paciente">
+        Agregar Paciente
       </button>
-      <button id="boton-cerrar-sesion">Cerrar Sesión</button>
+      <button class="gerardito" id="boton-agregar-pacientes-api">
+        Generar Paciente Ficticio
+      </button>
+      <button class="gerardito" id="boton-cerrar-sesion">Cerrar Sesión</button>
     </div>
     <div class="contenedor-registro" style="display: none">
       <h1>Registro</h1>
