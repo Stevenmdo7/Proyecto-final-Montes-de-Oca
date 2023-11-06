@@ -143,15 +143,24 @@ document
     });
   });
 
-function iniciarSesion(usuario, contraseña) {
-  const usuarioEncontrado = usuariosRegistrados.find(
-    (user) => user.username === usuario && user.contrasena === contraseña
-  );
-  if (usuarioEncontrado) {
-    return true;
+  function iniciarSesion(usuario, contraseña) {
+    const usuarioEncontrado = usuariosRegistrados.find(
+      (user) => user.username === usuario && user.contrasena === contraseña
+    );
+    if (usuarioEncontrado) {
+      const audioBackground = document.getElementById('audio-background');
+      if (audioBackground) {
+        audioBackground.pause();
+      }
+      
+      const audioLogin = document.getElementById('audio-login');
+      if (audioLogin) {
+        audioLogin.play();
+      }
+      return true;
+    }
+    return false;
   }
-  return false;
-}
 
 function agregarPacienteManual(nombre, apellido, edad, direccion, diagnostico) {
   const imagenInput = document.getElementById("imagen-paciente");
@@ -511,6 +520,63 @@ document
       const contenedorRegistro = document.querySelector(".contenedor-registro");
       contenedorRegistro.style.display = "none";
     }
+  });
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const audioBackground = document.getElementById('audio-background');
+    const audioLogin = document.getElementById('audio-login');
+    if (audioBackground) {
+      audioBackground.play();
+    }
+  
+    const botonInstructivo = document.getElementById('boton-instructivo');
+    if (botonInstructivo) {
+      botonInstructivo.addEventListener('click', () => {
+        if (audioBackground.paused) {
+          audioBackground.play();
+        } else {
+          audioBackground.pause();
+        }
+      });
+    }
+  
+    document
+      .getElementById("formulario-login")
+      .addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        const usuario = document.getElementById("usuario").value;
+        const contraseña = document.getElementById("contraseña").value;
+  
+        if (iniciarSesion(usuario, contraseña)) {
+          if (audioBackground) {
+            audioBackground.pause();
+          }
+  
+          if (audioLogin) {
+            audioLogin.loop = true;
+            audioLogin.play();
+          }
+  
+          const contenedorLogin = document.querySelector(".contenedor-login");
+          contenedorLogin.style.display = "none";
+          const contenedorAdmin = document.querySelector(".contenedor-admin");
+          contenedorAdmin.style.display = "block";
+          actualizarListaPacientes();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Credenciales incorrectas. Intente de nuevo",
+          });
+        }
+      });
+  
+    document
+      .getElementById("boton-cerrar-sesion")
+      .addEventListener("click", function () {
+        if (audioLogin) {
+          audioLogin.pause();
+        }
+        cerrarSesion();
+      });
   });
 document
   .getElementById("formulario-login")
